@@ -39,20 +39,20 @@
 /* Links */
 
 a {
-    color: @tc-link;
+    color: @bc-link;
     text-decoration: none;
 }
 
 a:hover {
-    color: @tc-link-hover;
+    color: @bc-link;
     text-decoration: underline;
 }
 
 a:focus {
-    color: @tc-link-hover;
+    color: @bc-link;
     outline: 0;
     border-radius: 3px;
-    box-shadow: @tc-input-glow;
+    box-shadow: 0 0 0 1px @bc-btn-border-focused-glow;
     text-decoration: none;
 }
 
@@ -192,8 +192,8 @@ a:focus {
 .toolbar {
     font-size: @label-font-size;
     padding: 4px 8px;
-    background-color: @bc-white;
-    color: @bc-black;
+    background-color: @background-color-0;
+    color: @bc-text;
 
     position: relative;  // needed for abs-positioned elements in toolbar (e.g. right-aligned "X")
 
@@ -240,7 +240,7 @@ a:focus {
     .animation(dropdown, 90ms, cubic-bezier(0, .97, .2, .99), 0, 1);
     -webkit-transform-origin: 0 0;
     border: none;
-    border-radius: @tc-control-border-radius;
+    border-radius: @bc-btn-border-radius;
 }
 
 @-webkit-keyframes dropdown {
@@ -265,7 +265,7 @@ a:focus {
 
     // General item appearance
     a {
-        color: @bc-black;
+        color: @bc-text-menu;
         text-shadow: none;
         cursor: default;
     }
@@ -274,18 +274,18 @@ a:focus {
     .dropdown-toggle {
         padding: @menubar-top-padding @menubar-h-padding @menubar-bottom-padding;
         border: 1px solid rgba(0, 0, 0, 0); // transparent border just to hold the layout so it doesn't shift on hover
-        color: fadeout(@bc-black, 25%);
+        color: fadeout(@bc-text-menu, 25%);
         font-weight: @font-weight-light;
     }
     .dropdown-toggle:focus {
-        background-color: @bc-white;
+        background-color: @bc-bg-menu;
         outline: 0;
     }
     .dropdown-toggle:hover, .dropdown.open .dropdown-toggle {
         /* Note: we need several selectors for this in order to match the specificity of all the various Bootstrap
            color rules we need to override (and Bootstrap has several selectors because the colors really differ
            in their defaults). */
-        color: @bc-black;
+        color: @bc-text-menu;
         background: @item-highlight-color;
         border-color: #dbeaf4;
     }
@@ -308,9 +308,9 @@ a:focus {
         width: -webkit-max-content;
         width: -moz-max-content;
 
-        background-color: @bc-white;
+        background-color: @bc-bg-menu;
         .border-radius(0 0 3px 3px);
-        box-shadow: @tc-dropdown-shadow;
+        box-shadow: 0 3px 9px @bc-dropdown-shadow;
         border: none;
 
         // Menu items
@@ -323,7 +323,7 @@ a:focus {
                 // More padding on top than bottom to center font within its bg highlight better.
                 padding: 2px 10px 0px 6px;
 
-                color: @bc-black;
+                color: @bc-text-menu;
                 text-shadow: none;
                 white-space: nowrap;
                 .box-shadow(none);
@@ -333,15 +333,15 @@ a:focus {
                 }
 
                 &:hover, &.highlight {
-                    color: @bc-black;
+                    color: @bc-text-menu;
                     background: @item-highlight-color;
                 }
 
                 &.disabled {
-                    color: @bc-gray;
+                    color: @bc-text-thin-quiet;
 
                     &:hover {
-                        background: @bc-white;
+                        background: @bc-bg-menu;
                     }
                 }
 
@@ -382,7 +382,7 @@ a:focus {
 
     .dropdown-menu {
         .border-radius(3px);
-        box-shadow: @tc-dropdown-shadow;
+        box-shadow: 0 3px 9px @bc-dropdown-shadow;
     }
 
     .menu-shortcut {
@@ -393,7 +393,7 @@ a:focus {
 .codehint-menu {
     opacity: 0;
     .dropdown-menu {
-        box-shadow: @tc-dropdown-shadow;
+        box-shadow: 0 3px 9px @bc-dropdown-shadow;
         max-height: 160px;
         overflow-y: auto;
         padding: 0;
@@ -406,13 +406,13 @@ a:focus {
 
                 // Don't show highlighting on hover for code hints...
                 &:hover {
-                    color: @bc-black;
-                    background-color: @bc-white;
+                    color: @bc-text-menu;
+                    background-color: @bc-bg-menu;
                 }
 
                 // ...except for selected item
                 &.highlight:hover {
-                    color: @bc-black;
+                    color: @bc-text-menu;
                     background-color: @item-highlight-color;
                 }
             }
@@ -449,7 +449,7 @@ a:focus {
     top: 11px;
 
     /* dropdown triangle */
-    border-top: 4px solid @tc-gray-component-triangle;
+    border-top: 4px solid @bc-btn-triangle;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
 }
@@ -464,11 +464,11 @@ a:focus {
     
     &.dropdown-menu {
         border: none;
-        border-radius: @tc-control-border-radius;
+        border-radius: @bc-btn-border-radius;
         padding: 5px 0;
         position: absolute;
         display: block;
-        box-shadow: @tc-dropdown-shadow;
+        box-shadow: 0 3px 9px @bc-dropdown-shadow;
         max-height: 160px;
         overflow-y: auto;
         max-width: none;
@@ -478,7 +478,7 @@ a:focus {
     
     &.dropdown-menu li a {
         padding: 1px 15px 1px 15px;
-        color: @bc-black;
+        color: @bc-text-menu;
     }
     
     &.dropdown-menu .stylesheet-link {
@@ -486,8 +486,8 @@ a:focus {
     }
     
     &.dropdown-menu a.selected {
-        background: @tc-highlight;
-        color: @bc-black !important;
+        background: @bc-bg-highlight;
+        color: @bc-text-menu !important;
     }
 
     &.dropdown-menu a {
@@ -533,11 +533,11 @@ a:focus {
     }
     
     .stylesheet-name {
-        color: @tc-text;
+        color: @bc-text;
     }
     
     .stylesheet-dir {
-        color: @tc-quiet-text;
+        color: @bc-text-quiet;
     }
 }
 
@@ -559,7 +559,7 @@ a:focus {
 }
 
 .modal {
-    background-color: @tc-gray-panel;
+    background-color: @bc-panel-bg;
     border: 1px solid rgba(0, 0, 0, 0.1);
     min-width: 200px;
     position: relative;
@@ -574,13 +574,13 @@ a:focus {
 }
 
 .modal-header {
-    background: @tc-gray-panel-top-bar;
+    background: @bc-panel-head;
     border-radius: 4px 4px 0 0;
-    border-bottom: 1px solid @tc-gray-panel-separator;
+    border-bottom: 1px solid @bc-panel-separator;
 }
 
 .modal-body {
-    background-color: @tc-gray-panel;
+    background-color: @bc-panel-bg;
 }
 
 .modal-body.no-padding {
@@ -606,8 +606,8 @@ a:focus {
 
 .modal-footer {
     text-align: right;
-    background-color: @tc-gray-panel;
-    border-top: 1px solid @tc-gray-panel-separator;
+    background-color: @bc-panel-bg;
+    border-top: 1px solid @bc-panel-separator;
     box-shadow: none;
     padding: 10px 15px 12px;
     white-space: nowrap;
@@ -670,7 +670,7 @@ a:focus {
 
 
 .dialog-title {
-    color: @tc-light-weight-text;
+    color: @bc-text-thin;
     margin-bottom: 0;
     margin-top: 0;
     font-size: 22px;
@@ -679,7 +679,7 @@ a:focus {
 }
 
 .dialog-message {
-    color: @tc-text;
+    color: @bc-text;
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 20px;
@@ -688,7 +688,7 @@ a:focus {
 
 .dialog-message li {
     line-height: 20px;
-    color: @tc-light-weight-text;
+    color: @bc-text-thin;
     padding: 0 0 5px;
 }
 
@@ -707,7 +707,7 @@ a:focus {
 
 .dialog-list > li:before {
     content: "•  ";
-    color: @tc-input-border;
+    color: @bc-input-border;
     font-size: 1.5em;
     position: relative;
     top: 1px;
@@ -901,7 +901,7 @@ a[href^="http"] {
     .modal-body {
         height: 400px;
         overflow-y: scroll;
-        background-color: @tc-gray-panel;
+        background-color: @bc-panel-bg;
         padding: 0;
         
         .empty-message {
@@ -913,7 +913,7 @@ a[href^="http"] {
         }
 
         .info-message {
-            background-color: @tc-gray-panel;
+            background-color: @bc-panel-bg;
             padding: 1em;
         }
 
@@ -934,7 +934,7 @@ a[href^="http"] {
                 width: 220px;
             }
             .ext-name {
-                color: @tc-text;
+                color: @bc-text;
                 display: block;
                 font-size: 15px;
                 font-weight: normal;
@@ -943,16 +943,16 @@ a[href^="http"] {
             }
             .ext-desc {
                 width: auto;
-                color: @tc-text;
+                color: @bc-text;
                 font-weight: normal;
                 .user-select(text);
                 cursor: text;
             }
             .ext-keywords {
-                color: @tc-input-placeholder-text;
+                color: @bc-input-text-placeholder;
             }
             .muted {
-                color: @tc-input-placeholder-text;
+                color: @bc-input-text-placeholder;
             }
             .alert {
                 font-size: 11px;
@@ -960,7 +960,7 @@ a[href^="http"] {
             }
             .error {
                 font-weight: @font-weight-semibold;
-                color: @tc-error-text;
+                color: @bc-error;
             }
             .ext-version,
             .ext-date,
@@ -1002,7 +1002,7 @@ a[href^="http"] {
         overflow: auto;
 
         #about-build-number {
-            color: @tc-light-weight-quiet-text;
+            color: @bc-text-thin-quiet;
         }
         .about-info {
             max-height: 300px;
@@ -1055,32 +1055,32 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-    background-color: @tc-input-background;
-    border: 1px solid @tc-input-border;
-    color: @tc-light-weight-text;
+    background-color: @bc-input-bg;
+    border: 1px solid @bc-input-border;
+    color: @bc-text-thin;
     font-size: (@baseFontSize + 1px);
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
-    .border-radius(@tc-control-border-radius);
-    .box-shadow(@tc-input-inner-shadow);
+    .border-radius(@bc-btn-border-radius);
+    .box-shadow(inset 0 1px 0 @bc-input-inner-shadow);
     .transition(~"border linear 180ms, box-shadow linear 180ms");
 
     &::-webkit-input-placeholder {
-        color: @tc-input-placeholder-text;
+        color: @bc-input-text-placeholder;
         font-weight: normal;
         -webkit-font-smoothing: antialiased;
     }
 
     &:focus {
         outline: 0;
-        background-color: @tc-input-background;
+        background-color: @bc-input-bg;
         text-shadow: none;
-        border: 1px solid @tc-gray-component-focused-border;
-        box-shadow: @tc-input-inner-shadow, @tc-input-glow;
+        border: 1px solid @bc-btn-border-focused;
+        box-shadow: inset 0 1px 0 @bc-input-inner-shadow, 0 0 0 1px @bc-btn-border-focused-glow;
     }
 
     &:disabled {
-        opacity: @tc-disabled-opacity;
+        opacity: @bc-disabled-opacity;
         cursor: default;
     }
 }
@@ -1092,8 +1092,8 @@ input[type="color"],
 }
 
 .tooltip-inner {
-    box-shadow: @tc-dropdown-shadow;
-    color: @tc-text;
+    box-shadow: 0 3px 9px @bc-dropdown-shadow;
+    color: @bc-text;
     max-width: 220px;
     text-align: left;
 }
@@ -1121,82 +1121,83 @@ input[type="color"],
 .btn:focus,
 .btn.disabled,
 .btn[disabled] {
-    background-color: @tc-button-background;
+    background-color: @bc-btn-bg;
 }
 
 .btn.primary:hover,
 .btn.primary:focus,
 .btn.primary.disabled,
 .btn.primary[disabled] {
-    background-color: @tc-call-to-action;
+    background-color: @bc-primary-btn;
 }
 
 .btn {
     // Button Base
     background-image: none;
 
-    background-color: @tc-button-background;
-    color: @tc-text;
+    background-color: @bc-btn-bg;
+    color: @bc-text;
     cursor: default;
     font-size: (@baseFontSize + 1);
     font-weight: @font-weight-semibold;
     line-height: normal;
-    border: 1px solid @tc-gray-component-border;
-    .border-radius(@tc-control-border-radius);
-    box-shadow: @tc-button-highlight;
+    border: 1px solid @bc-btn-border;
+    .border-radius(@bc-btn-border-radius);
+    box-shadow: inset 0 1px 0 @bc-btn-highlight;
     -webkit-font-smoothing: antialiased;
+    text-shadow: none;
 
     &:hover {
-        background-color: @tc-button-background;
-        color: @tc-text;
+        background-color: @bc-btn-bg;
+        color: @bc-text;
     }
 
     // Focus state for keyboard and accessibility
     &:focus {
-        border: 1px solid @tc-gray-component-focused-border;
-        box-shadow: @tc-button-highlight, @tc-input-glow;
-        color: @tc-text;
+        border: 1px solid @bc-btn-border-focused;
+        box-shadow: inset 0 1px 0 @bc-btn-highlight, 0 0 0 1px @bc-btn-border-focused-glow;
+        color: @bc-text;
         outline: none;
     }
 
     // Active and Disabled states
     &.active:not([disabled]) {
         background-image: none;
-        background-color: @tc-highlight;
-        box-shadow: @tc-button-down-shadow;
-        color: @tc-link;
+        background-color: @bc-bg-highlight;
+        box-shadow: inset 0 1px 0 @bc-btn-down-shadow;
+        color: @bc-link;
     }
     
     &:active:not([disabled]) {
         background-image: none;
-        background-color: @tc-button-down-background;
-        box-shadow: @tc-button-down-shadow;
-        color: @tc-text;
+        background-color: @bc-btn-bg-down;
+        box-shadow: inset 0 1px 0 @bc-btn-down-shadow;
+        color: @bc-text;
     }
 
     &.disabled, &[disabled] {
-        opacity: @tc-disabled-opacity;
+        opacity: @bc-disabled-opacity;
     }
 
     // Primary Button Type
     &.primary {
         background-image: none;
-        background-color: @tc-call-to-action;
-        border: 1px solid  @tc-call-to-action-border;
-        box-shadow: @tc-call-to-action-highlight;
-        color: @tc-call-to-action-text;
+        background-color: @bc-primary-btn;
+        border: 1px solid  @bc-primary-btn-border;
+        box-shadow: inset 0 1px 0 @bc-primary-btn-highlight;
+        color: @bc-primary-btn-text;
         text-shadow: none;
         &.active,
         &:active {
             background-image: none;
-            background-color: @tc-call-to-action-down;
-            box-shadow: @tc-call-to-action-down-shadow;
-            color: @tc-call-to-action-text;
+            background-color: @bc-primary-btn-down;
+            box-shadow: inset 0 1px 0 @bc-primary-btn-down-shadow;
+            color: @bc-primary-btn-text;
         }
 
         &:focus {
-            border: 1px solid @tc-call-to-action-border;
-            box-shadow: @tc-call-to-action-highlight, @tc-input-glow;
+            border: 1px solid @bc-primary-btn-border;
+            box-shadow: inset 0 1px 0 @bc-primary-btn-highlight, 0 0 0 1px @bc-btn-border-focused-glow;
             outline: none;
         }
     }
@@ -1221,7 +1222,7 @@ input[type="color"],
     // Button Sizes
     &.large {
         font-size: (@baseFontSize + 1px);
-        .border-radius(@tc-control-border-radius);
+        .border-radius(@bc-btn-border-radius);
     }
     &.small {
         font-size: (@baseFontSize - 1px);
@@ -1230,16 +1231,16 @@ input[type="color"],
 
 .btn-alt-quiet {
     border: 1px solid transparent;
-    border-radius: @tc-control-border-radius;
+    border-radius: @bc-btn-border-radius;
     text-decoration: none;
     &:hover {
-        border: 1px solid @tc-alt-component-border;
-        box-shadow: @tc-button-alt-highlight;
+        border: 1px solid @bc-btn-border-alt;
+        box-shadow: inset 0 1px 0 @bc-btn-highlight;
     }
     &:active {
-        background: @tc-button-alt-down-background;
-        border: 1px solid @tc-alt-component-border;
-        box-shadow: @tc-call-to-action-down-shadow;
+        background: @bc-btn-bg-down-alt;
+        border: 1px solid @bc-btn-border-alt;
+        box-shadow: inset 0 1px 0 @bc-primary-btn-down-shadow;
     }
 }
 
@@ -1249,8 +1250,8 @@ input[type="color"],
     font-weight: normal;
     line-height: 14px;
     &:focus {
-        border: 1px solid @tc-gray-component-focused-border;
-        box-shadow: @tc-button-highlight, @tc-input-glow;
+        border: 1px solid @bc-btn-border-focused;
+        box-shadow: inset 0 1px 0 @bc-btn-highlight, 0 0 0 1px @bc-btn-border-focused-glow;
         outline: none;
     }
 }
@@ -1276,17 +1277,17 @@ input[type="color"],
 .table-striped tbody {
     tr:nth-child(odd) td,
     tr:nth-child(odd) th {
-        background-color: @tc-lighter-gray; // TopCoat palette
+        background-color: @bc-panel-bg-alt; // TopCoat palette
     }
     tr:nth-child(even) td,
     tr:nth-child(even) th {
-        background-color: @tc-gray-panel; // turn off bootstrap hover highlight
+        background-color: @bc-panel-bg; // turn off bootstrap hover highlight
     }
 }
 .row-highlight tbody {
     tr:hover td,
     tr:hover th {
-        background-color: @tc-highlight; // TopCoat palette
+        background-color: @bc-bg-highlight; // TopCoat palette
     }
 }
 
@@ -1299,7 +1300,7 @@ strong {
 /* Type */
 
 code {
-    color: @bc-black;
+    color: @bc-text;
     background-color: transparent;
 }
 
@@ -1323,7 +1324,7 @@ b,
 strong,
 dt,
 .label {
-    color: @tc-text;
+    color: @bc-text;
     font-weight: @font-weight-semibold;
 }
 
@@ -1334,13 +1335,13 @@ dt,
 
 .alert {
     text-shadow: none;
-    background-color: @tc-warning-background;
+    background-color: @bc-bg-warning;
     border: none;
 }
 .alert,
 .alert h4 {
     // Specified for the h4 to prevent conflicts of changing @headingsColor
-    color: @tc-warning-text;
+    color: @bc-text-warning;
 }
 
 input[type="radio"],
@@ -1352,27 +1353,27 @@ input[type="checkbox"] {
     height: 13px;
     width: 13px;
     vertical-align: middle;
-    border: 1px solid @tc-gray-component-border;
+    border: 1px solid @bc-btn-border;
     border-radius: 3px;
-    background-color: @tc-button-background;
+    background-color: @bc-btn-bg;
     -webkit-appearance: none;
-    box-shadow: @tc-button-highlight;
+    box-shadow: inset 0 1px 0 @bc-btn-highlight;
 }
 
 input[type="checkbox"]:active:not(:disabled) {
-    background-color: @tc-button-down-background;
-    box-shadow: @tc-button-down-shadow;
+    background-color: @bc-btn-bg-down;
+    box-shadow: inset 0 1px 0 @bc-btn-down-shadow;
 }
 
 input[type="checkbox"]:focus {
     outline:none;
-    border: 1px solid @tc-gray-component-focused-border;
-    box-shadow: @tc-input-glow;
+    border: 1px solid @bc-btn-border-focused;
+    box-shadow: 0 0 0 1px @bc-btn-border-focused-glow;
 }
 
 input[type="checkbox"]:checked:before {
     font-weight: bold;
-    color: @tc-text;
+    color: @bc-text;
     content: '\2713';
     -webkit-margin-start: 0;
     position: relative;
